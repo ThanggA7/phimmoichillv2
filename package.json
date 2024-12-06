@@ -1,0 +1,51 @@
+{
+  "name": "phimmoichillv2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@fortawesome/free-brands-svg-icons": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/material": "^6.1.10",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "artplayer": "^5.2.1",
+    "artplayer-plugin-hls-control": "^1.0.1",
+    "axios": "^1.7.7",
+    "hls.js": "^1.5.17",
+    "lodash": "^4.17.21",
+    "phimmoichillv2": "file:",
+    "plyr-react": "^5.3.0",
+    "react": "^18.3.1",
+    "react-awesome-slider": "^4.1.0",
+    "react-dom": "^18.3.1",
+    "react-facebook": "^9.0.12",
+    "react-router-dom": "^6.28.0",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.1.14"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.16",
+    "vite": "^5.4.10"
+  }
+}
