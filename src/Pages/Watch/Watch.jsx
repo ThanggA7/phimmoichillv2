@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ArtPlayerComponent from "./ArtPlayerComponent";
+import VideoPlayer from "./VideoPlayer";
 function Watch() {
   const [category, setCatgetory] = useState([]);
   const [watchinfo, setWatchInfo] = useState([]);
@@ -86,8 +86,8 @@ function Watch() {
           <h1 className="text-white ">Xem phim {watchinfo.name}</h1>
         </div>
 
-        <div className=" z-0 mt-[30px]">
-          <ArtPlayerComponent url={videoUrl} />
+        <div className=" mt-[30px]">
+          <VideoPlayer url={videoUrl} />
         </div>
         <div className=" mx-auto p-4  mt-[25px]">
           <div className="flex flex-col xl:flex-row gap-4">
@@ -158,7 +158,7 @@ function Watch() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-[1px] bg-[#aaaaaa62] my-[1em]"></div>
+                <div className="w-full h-[1px] bg-[#aaaaaa62] my-[1em] xl:block hidden"></div>
                 <div>
                   <div className=" border rounded-[5px] w-[70px] text-center">
                     <span className="text-[15px] px-1 text-white">Phụ đề</span>
@@ -167,7 +167,7 @@ function Watch() {
                     {watchchap.map((watchchap, index) => {
                       return chap2 > 1 ? (
                         <Link
-                        to={`/watch/${id}/${watchchap.slug}`}
+                          to={`/watch/${id}/${watchchap.slug}`}
                           onClick={() => {
                             setFilm(watchchap.link_m3u8);
                           }}
@@ -305,7 +305,7 @@ function Watch() {
                         />
 
                         <div>
-                          <p className="text-white text-[17px] w-[270px] overflow-hidden text-ellipsis whitespace-nowrap ">
+                          <p className="text-white text-[17px] w-[200px] overflow-hidden text-ellipsis whitespace-nowrap ">
                             {dx.name}
                           </p>
                           <div className="flex items-center gap-3 mt-3">
