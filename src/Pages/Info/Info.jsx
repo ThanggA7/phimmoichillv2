@@ -3,6 +3,7 @@ import { FacebookProvider, ShareButton } from "react-facebook";
 import { React, useEffect, useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import useButton from "../../Hooks/useButton";
 import {
   faPlay,
   faHeart,
@@ -32,6 +33,7 @@ function Info() {
   };
   const { id } = useParams();
   const url = "https://yourwebsite.com";
+
   useEffect(() => {
     const InfoFilm = async () => {
       try {
@@ -261,7 +263,6 @@ function Info() {
                       </p>
                     </button>
                   </div>
-           
                 </div>
               </div>
 
@@ -412,6 +413,7 @@ function Info() {
             </div>
           </div>
         </div>
+
       </div>
     </>
   );

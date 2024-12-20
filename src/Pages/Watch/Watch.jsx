@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleLeft,
@@ -36,7 +36,6 @@ function Watch() {
 
     WatchFilm();
   }, [id]);
-
 
   useEffect(() => {
     actors.forEach(async (actor) => {
@@ -165,20 +164,22 @@ function Watch() {
                   <div className="mt-[20px] grid lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 grid-cols-2  gap-3">
                     {watchchap.map((watchchap, index) => {
                       return chap2 > 1 ? (
-                        <Link
+                        <NavLink
                           to={`/watch/${id}/${watchchap.slug}`}
                           onClick={() => {
                             setFilm(watchchap.link_m3u8);
                           }}
                           key={index}
-                          className="flex items-center justify-center  gap-2 px-2 py-1 bg-[#282B3A] w-full h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71] "
+                          className={({ isActive }) =>
+                            isActive ? "flex items-center justify-center  gap-2 px-2 py-1 bg-[#5aac5aa8] w-full h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71]" : "flex items-center justify-center  gap-2 px-2 py-1 bg-[#282B3A] w-full h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71]"
+                          }
                         >
                           <FontAwesomeIcon
                             className="text-[15px] text-white  group-hover:text-[#F2CE71] "
                             icon={faPlay}
                           />
                           Tập {index + 1}
-                        </Link>
+                        </NavLink>
                       ) : (
                         <Link
                           key={index}
@@ -288,8 +289,6 @@ function Watch() {
                   </div>
                 </div>
                 <div className="w-full h-[1px] bg-[#aaaaaa28] my-[1em]"></div>
-
-               
               </div>
             </div>
           </div>
