@@ -261,13 +261,7 @@ function Info() {
                       </p>
                     </button>
                   </div>
-                  <div className="flex items-center gap-2 px-2 py-1 w-[100px] rounded-lg border">
-                    <FontAwesomeIcon
-                      className="text-[30px] text-white"
-                      icon={faImdb}
-                    />{" "}
-                    <p className="text-[20px] text-white font-medium">0</p>
-                  </div>
+           
                 </div>
               </div>
 
