@@ -294,13 +294,13 @@ function Info() {
                 <div className="mt-[25px]">
                   {value === 0 && (
                     <div>
-                      <div className="flex items-center gap-2 flex-wrap">
+                      <div className="grid lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 grid-cols-2  gap-3">
                         {chap.map((chap, index) => {
                           return chap2 > 2 ? (
                             <Link
                               key={index}
                               to={`/watch/${id}/${chap.slug}`}
-                              className="flex items-center justify-center  gap-2 px-2 py-1 bg-[#282B3A] w-[150px] h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71] "
+                              className="flex items-center justify-center  gap-2 px-2 py-1 bg-[#282B3A] w-full h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71] "
                             >
                               <FontAwesomeIcon
                                 className="text-[15px] text-white  group-hover:text-[#F2CE71] "
