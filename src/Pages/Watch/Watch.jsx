@@ -162,7 +162,7 @@ function Watch() {
                   <div className=" border rounded-[5px] w-[70px] text-center">
                     <span className="text-[15px] px-1 text-white">Phụ đề</span>
                   </div>
-                  <div className="mt-[20px] flex gap-3 flex-wrap">
+                  <div className="mt-[20px] grid lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 grid-cols-2  gap-3">
                     {watchchap.map((watchchap, index) => {
                       return chap2 > 1 ? (
                         <Link
@@ -171,7 +171,7 @@ function Watch() {
                             setFilm(watchchap.link_m3u8);
                           }}
                           key={index}
-                          className="flex items-center justify-center  gap-2 px-2 py-1 bg-[#282B3A] w-[150px] sm:max-w-[150px] h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71] "
+                          className="flex items-center justify-center  gap-2 px-2 py-1 bg-[#282B3A] w-full h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71] "
                         >
                           <FontAwesomeIcon
                             className="text-[15px] text-white  group-hover:text-[#F2CE71] "
