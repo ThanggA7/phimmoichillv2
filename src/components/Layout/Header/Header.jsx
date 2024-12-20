@@ -5,6 +5,7 @@ import {
   faBars,
   faXmark,
   faUserPlus,
+  faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -16,7 +17,7 @@ function Header() {
   const [searchFilm, setSearchFilm] = useState("");
   const [resultFilm, setResultFilm] = useState([]);
   const [more, setMore] = useState([]);
-  const [resultSearch, setResultSearch] = useState("");
+  const [country, setCountry] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
   const SearchFilm = (e) => {
     setSearchFilm(e.target.value);
@@ -54,6 +55,17 @@ function Header() {
     }, 1000);
     handleInputChange(searchFilm);
   }, [searchFilm]);
+
+  useEffect(() => {
+    const Countries = async () => {
+      try {
+        const res = await axios.get("https://phimapi.com/quoc-gia");
+        setCountry(res.data);
+      } catch (error) {}
+    };
+
+    Countries();
+  }, []);
 
   return (
     <div
@@ -174,8 +186,23 @@ function Header() {
             <li>
               <a href="#!">Phim bộ</a>
             </li>
-            <li>
+            <li className="flex items-center gap-1 relative group">
               <a href="#!">Quốc gia</a>
+              <FontAwesomeIcon icon={faAngleDown} />
+
+              <div className="w-[200px] h-[250px] bg-[#191B24] absolute top-[25px] rounded-md  flex-col gap-2 overflow-auto no-scrollbar p-2 group-hover:flex hidden">
+                {country.map((country, index) => {
+                  return (
+                    <Link
+                      key={index}
+                      className="hover:bg-[#474d6680] hover:text-yellow-300 p-2 rounded-sm"
+                      to={`/the-loai/${country.slug}`}
+                    >
+                      {country.name}
+                    </Link>
+                  );
+                })}
+              </div>
             </li>
             <li>
               <a href="#!">Diễn viên</a>
@@ -316,8 +343,48 @@ function Header() {
                 <li>
                   <a href="#!">Phim bộ</a>
                 </li>
-                <li>
+                <li className="flex items-center gap-1 relative group">
                   <a href="#!">Quốc gia</a>
+                  <FontAwesomeIcon icon={faAngleDown} />
+
+                  <div className="w-[200px] h-[250px] bg-[#191B24] absolute top-[25px] rounded-md  flex-col gap-2 overflow-auto no-scrollbar p-2 group-target:flex hidden">
+                    <Link
+                      className="hover:bg-[#474d6680] hover:text-yellow-300 p-2 rounded-sm"
+                      to={""}
+                    >
+                      Viet Nam
+                    </Link>
+                    <Link
+                      className="hover:bg-[#474d6680] hover:text-yellow-300 p-2 rounded-sm"
+                      to={""}
+                    >
+                      Viet Nam
+                    </Link>
+                    <Link
+                      className="hover:bg-[#474d6680] hover:text-yellow-300 p-2 rounded-sm"
+                      to={""}
+                    >
+                      Viet Nam
+                    </Link>
+                    <Link
+                      className="hover:bg-[#474d6680] hover:text-yellow-300 p-2 rounded-sm"
+                      to={""}
+                    >
+                      Viet Nam
+                    </Link>
+                    <Link
+                      className="hover:bg-[#474d6680] hover:text-yellow-300 p-2 rounded-sm"
+                      to={""}
+                    >
+                      Viet Nam
+                    </Link>
+                    <Link
+                      className="hover:bg-[#474d6680] hover:text-yellow-300 p-2 rounded-sm"
+                      to={""}
+                    >
+                      Viet Nam
+                    </Link>
+                  </div>
                 </li>
                 <li>
                   <a href="#!">Diễn viên</a>

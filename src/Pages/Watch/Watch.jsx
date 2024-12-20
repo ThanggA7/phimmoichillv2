@@ -37,7 +37,6 @@ function Watch() {
     WatchFilm();
   }, [id]);
 
-  console.log(film);
 
   useEffect(() => {
     actors.forEach(async (actor) => {
@@ -265,7 +264,7 @@ function Watch() {
                 <div className="w-full h-[1px] bg-[#aaaaaa28] my-[1em]"></div>
                 <div>
                   <h1 className="text-[20px] text-white">Diễn viên</h1>
-                  <div className="mt-[20px] grid grid-cols-3 gap-3">
+                  <div className="mt-[20px] grid lg:grid-cols-3 grid-cols-2 gap-3">
                     {actors.map((actors, index) => {
                       return (
                         <div
@@ -290,39 +289,7 @@ function Watch() {
                 </div>
                 <div className="w-full h-[1px] bg-[#aaaaaa28] my-[1em]"></div>
 
-                <div>
-                  {DX.map((dx, index) => {
-                    return (
-                      <Link
-                        to={`/info/${dx.slug}`}
-                        key={index}
-                        className="w-full h-[120px] rounded-md p-1 flex items-center gap-4 bg-[#1D1F28] hover:bg-[#3e434ba6] mt-3"
-                      >
-                        <img
-                          className="w-[80px] h-full object-cover rounded-lg"
-                          src={`${dx.poster_url}`}
-                          alt=""
-                        />
-
-                        <div>
-                          <p className="text-white text-[17px] w-[200px] overflow-hidden text-ellipsis whitespace-nowrap ">
-                            {dx.name}
-                          </p>
-                          <div className="flex items-center gap-3 mt-3">
-                            <p className="text-[#AAAA]  text-[12px] ">FHD</p>
-
-                            <div className="flex items-center gap-2">
-                              <div className="bg-white w-[5px] h-[5px] rounded-full"></div>
-                              <p className="text-[#AAAA]  text-[12px] ">
-                                {dx.year}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
+               
               </div>
             </div>
           </div>

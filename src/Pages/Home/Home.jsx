@@ -77,7 +77,7 @@ function Home() {
 
                       <div className=" lg:flex items-center gap-[25px] mt-4 hidden">
                         <Link
-                          to={`info/${mcn.slug}`}
+                          to={`watch/${mcn.slug}`}
                           className="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-[#FEDD8A] hover:shadow-[0_5px_10px_10px_rgba(255,218,125,.15)] ]"
                         >
                           <FontAwesomeIcon

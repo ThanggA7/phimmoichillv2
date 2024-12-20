@@ -3,8 +3,8 @@ import Hls from "hls.js";
 
 const VideoPlayer = ({ url }) => {
   const videoRef = useRef(null);
-  const adStart = 15 * 60 + 1; 
-  const adEnd = 15 * 60 + 32; 
+  const adStart = 15 * 60 + 1;
+  const adEnd = 15 * 60 + 32;
 
   useEffect(() => {
     if (videoRef.current) {
@@ -23,8 +23,7 @@ const VideoPlayer = ({ url }) => {
           if (video.currentTime >= adStart && video.currentTime <= adEnd) {
             const nextTime = adEnd;
             if (Math.abs(video.currentTime - nextTime) > 0.5) {
-     
-              video.currentTime = nextTime; 
+              video.currentTime = nextTime;
             }
           }
         };
@@ -33,7 +32,7 @@ const VideoPlayer = ({ url }) => {
 
         return () => {
           hls.destroy();
-          video.removeEventListener("timeupdate", onTimeUpdate); 
+          video.removeEventListener("timeupdate", onTimeUpdate);
         };
       } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
         video.src = url;
@@ -43,7 +42,7 @@ const VideoPlayer = ({ url }) => {
     }
   }, [url]);
 
-  return <video ref={videoRef} controls width="100%" />;
+  return <video ref={videoRef} controls autoPlay width="100%" />;
 };
 
 export default VideoPlayer;
