@@ -1,3 +1,4 @@
+import Country from "../Pages/Category/Country";
 import Category from "../Pages/Category/Category";
 import Home from "../Pages/Home/Home";
 import Info from "../Pages/Info/Info";
@@ -8,6 +9,7 @@ const routePublic = [
   { path: "/info/:id", component: Info },
   { path: "/watch/:id/:chap", component: Watch },
   { path: "/watch/:id/", component: Watch },
+  { path: "/quoc-gia/:id", component: Country },
   { path: "/the-loai/:id", component: Category },
 ];
 

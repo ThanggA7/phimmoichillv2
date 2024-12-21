@@ -35,6 +35,10 @@ function Home() {
       } catch (error) {}
     };
     APIUPDATE();
+
+    setTimeout(() => {
+      
+    }, 3000);
   }, []);
 
   return (
@@ -94,12 +98,12 @@ function Home() {
                             />
                           </button>
                           <div className="w-[1px] h-[25px] bg-white"></div>
-                          <button>
+                          <Link to={`/info/${mcn.slug}`}>
                             <FontAwesomeIcon
                               className="text-white text-[25px] hover:text-[#FEDD8A]"
                               icon={faCircleInfo}
                             />
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>

@@ -1,0 +1,86 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import Typography from "@mui/material/Typography";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+function Country() {
+  const [country, setCountry] = useState([""]);
+  const [titlePage, settitlePage] = useState([""]);
+  const [totalPage, setTotalPage] = useState([""]);
+  const [page, setPage] = useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+  const theme = createTheme({
+    palette: {
+      secondary: {
+        main: "#e1f5fe",
+      },
+    },
+  });
+  const { id } = useParams();
+  useEffect(() => {
+    const Country = async () => {
+      try {
+        const res = await axios.get(
+          `https://phimapi.com/v1/api/quoc-gia/${id}?page=${page}&limit=32`
+        );
+        setCountry(res.data.data.items);
+        settitlePage(res.data.data.titlePage);
+        setTotalPage(res.data.data.params.pagination.totalPages);
+      } catch (error) {}
+    };
+    Country();
+  }, [id, page]);
+
+  return (
+    <>
+      <div className="p-4">
+        <div>
+          <h1 className="text-[1.8rem] text-white font-[600]">
+            Phim {titlePage}
+          </h1>
+        </div>
+        <div className="grid lg:grid-cols-8 md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-5 mt-[20px] ">
+          {country.map((country, index) => {
+            return (
+              <Link
+                key={index}
+                to={`/info/${country.slug}`}
+                className="flex items-center flex-col justify-center mt-[20px]"
+              >
+                <div className="w-full h-[300px] rounded-lg">
+                  <img
+                    className="w-full h-full object-cover"
+                    src={`https://phimimg.com/${country.poster_url}`}
+                    alt=""
+                  />
+                  <div className="w-full h-full  rounded-lg  hover:bg-[#00000000]"></div>
+                </div>
+                <p className="text-center text-white text-[14px] w-[150px] overflow-hidden  text-ellipsis line-clamp-1 mt-1 hover:text-yellow-300">
+                  {country.name}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+      <div className="flex items-center justify-center p-2 mt-[30px]">
+        <Stack spacing={2}>
+          <ThemeProvider theme={theme}>
+            <Pagination
+              color="secondary"
+              count={totalPage}
+              page={page}
+              onChange={handleChange}
+            />
+          </ThemeProvider>
+        </Stack>
+      </div>
+    </>
+  );
+}
+
+export default Country;

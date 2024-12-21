@@ -181,10 +181,10 @@ function Header() {
               <a href="#!">Chủ đề</a>
             </li>
             <li>
-              <a href="#!">Phim lẻ</a>
+            <Link to={`/the-loai/phim-le`}>Phim lẻ</Link>
             </li>
             <li>
-              <a href="#!">Phim bộ</a>
+             <Link to={`/the-loai/phim-bo`}>Phim bộ</Link>
             </li>
             <li className="flex items-center gap-1 relative group">
               <a href="#!">Quốc gia</a>
@@ -196,7 +196,7 @@ function Header() {
                     <Link
                       key={index}
                       className="hover:bg-[#474d6680] hover:text-yellow-300 p-2 rounded-sm"
-                      to={`/the-loai/${country.slug}`}
+                      to={`/quoc-gia/${country.slug}`}
                     >
                       {country.name}
                     </Link>
@@ -204,9 +204,7 @@ function Header() {
                 })}
               </div>
             </li>
-            <li>
-              <a href="#!">Diễn viên</a>
-            </li>
+      
           </ul>
         </nav>
 
@@ -338,10 +336,10 @@ function Header() {
                   <a href="#!">Chủ đề</a>
                 </li>
                 <li>
-                  <a href="#!">Phim lẻ</a>
+                  <Link to={`/the-loai/phim-le`}>Phim lẻ</Link>
                 </li>
                 <li>
-                  <a href="#!">Phim bộ</a>
+                  <Link to={`/the-loai/phim-bo`}>Phim bộ</Link>
                 </li>
                 <li className="flex items-center gap-1 relative group">
                   <a href="#!">Quốc gia</a>
