@@ -87,14 +87,17 @@ function Watch() {
     const videoElement = videoRef.current;
     const player = new Plyr(videoElement, {
       controls: [
+        "play-large",
         "play",
         "progress",
         "current-time",
         "mute",
         "volume",
+        "captions",
         "settings",
+        "pip",
+        "airplay",
         "fullscreen",
-        "autoplay",
       ],
       settings: ["speed", "quality", "captions"],
     });
