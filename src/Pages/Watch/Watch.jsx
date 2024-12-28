@@ -35,6 +35,7 @@ function Watch() {
         setCatgetory(res.data.movie.category);
         setActors(res.data.movie.actor);
         setFilm(res.data.episodes[0].server_data[0].link_m3u8);
+        document.title = `Xem phim ${res.data.movie.name} - ${res.data.movie.origin_name}  `;
       } catch (error) {}
     };
 

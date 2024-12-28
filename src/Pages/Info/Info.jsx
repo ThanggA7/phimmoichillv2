@@ -45,6 +45,7 @@ function Info() {
         setChap(res.data.episodes[0].server_data);
         setChap2(res.data.episodes[0].server_data.length);
         setActors(res.data.movie.actor);
+        document.title = `Phim ${res.data.movie.name} - ${res.data.movie.origin_name}  `;
       } catch (error) {}
     };
     InfoFilm();
@@ -296,7 +297,9 @@ function Info() {
                         />
                       </div>
                       <strong className="text-white">
-                      Vì Squid Game đã có sai phạm về yếu tố chính trị tại Việt Nam nên là bọn mình khuyến khích anh em không nên xem nhé !
+                        Vì Squid Game đã có sai phạm về yếu tố chính trị tại
+                        Việt Nam nên là bọn mình khuyến khích anh em không nên
+                        xem nhé !
                       </strong>
                     </div>
                   </div>
