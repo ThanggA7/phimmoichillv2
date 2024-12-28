@@ -103,14 +103,12 @@ function Watch() {
       const hls = new Hls();
       hls.loadSource(film);
       hls.attachMedia(videoElement);
-
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
         videoElement.play();
       });
 
       const adStart = 15 * 60 + 1;
       const adEnd = 15 * 60 + 32;
-
       const skipAd = () => {
         if (
           videoElement.currentTime >= adStart &&
@@ -119,18 +117,21 @@ function Watch() {
           videoElement.currentTime = adEnd + 1;
         }
       };
-
       videoElement.addEventListener("timeupdate", skipAd);
 
       return () => {
         hls.destroy();
-        videoElement.removeEventListener("timeupdate", skipAd);
-        player.destroy();
       };
     } else if (videoElement.canPlayType("application/vnd.apple.mpegurl")) {
       videoElement.src = film;
       videoElement.play();
     }
+
+    return () => {
+      hls.destroy();
+      videoElement.removeEventListener("timeupdate", skipAd);
+      player.destroy();
+    };
   }, [film]);
 
   return (
