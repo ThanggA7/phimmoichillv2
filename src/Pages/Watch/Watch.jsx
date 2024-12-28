@@ -1,5 +1,9 @@
 import { NavLink, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Plyr from "plyr";
+import Hls from "hls.js";
+import "plyr/dist/plyr.css";
+
 import {
   faAngleLeft,
   faAngleRight,
@@ -7,9 +11,8 @@ import {
   faComments,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import VideoPlayer from "./VideoPlayer";
 function Watch() {
   const [category, setCatgetory] = useState([]);
   const [watchinfo, setWatchInfo] = useState([]);
@@ -21,6 +24,7 @@ function Watch() {
   const [DX, setDX] = useState([]);
   const { id } = useParams();
   const { chap } = useParams();
+  const videoRef = useRef(null);
   useEffect(() => {
     const WatchFilm = async () => {
       try {
@@ -66,7 +70,68 @@ function Watch() {
     };
     APIUPDATE(random);
   }, []);
-  const videoUrl = film;
+  useEffect(() => {
+    const random = Math.floor(Math.random() * 10);
+    const APIUPDATE = async (random) => {
+      try {
+        const res = await axios.get(
+          `https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=${random}`
+        );
+        setDX(res.data.items);
+      } catch (error) {}
+    };
+    APIUPDATE(random);
+  }, []);
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    const player = new Plyr(videoElement, {
+      controls: [
+        "play",
+        "progress",
+        "current-time",
+        "mute",
+        "volume",
+        "settings",
+        "fullscreen",
+        "autoplay",
+      ],
+      settings: ["speed", "quality", "captions"],
+    });
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(film);
+      hls.attachMedia(videoElement);
+
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        videoElement.play();
+      });
+
+      const adStart = 15 * 60 + 1;
+      const adEnd = 15 * 60 + 32;
+
+      const skipAd = () => {
+        if (
+          videoElement.currentTime >= adStart &&
+          videoElement.currentTime <= adEnd
+        ) {
+          videoElement.currentTime = adEnd + 1;
+        }
+      };
+
+      videoElement.addEventListener("timeupdate", skipAd);
+
+      return () => {
+        hls.destroy();
+        videoElement.removeEventListener("timeupdate", skipAd);
+        player.destroy();
+      };
+    } else if (videoElement.canPlayType("application/vnd.apple.mpegurl")) {
+      videoElement.src = film;
+      videoElement.play();
+    }
+  }, [film]);
 
   return (
     <>
@@ -85,7 +150,7 @@ function Watch() {
         </div>
 
         <div className=" mt-[30px]">
-          <VideoPlayer url={videoUrl} />
+          <video ref={videoRef} id="my-hls-video" controls />
         </div>
         <div className=" mx-auto p-4  mt-[25px]">
           <div className="flex flex-col xl:flex-row gap-4">
