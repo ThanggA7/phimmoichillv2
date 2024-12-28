@@ -167,8 +167,9 @@ function Watch() {
                         />
                       </div>
                       <strong className="text-white">
-                        Tập 10 sẽ phát sóng ngày 28-12-2024. Các bạn nhớ đón xem
-                        nhé 😚
+                        Vì Squid Game đã có sai phạm về yếu tố chính trị tại
+                        Việt Nam nên là bọn mình khuyến khích anh em không nên
+                        xem nhé !
                       </strong>
                     </div>
                   </div>
