@@ -100,12 +100,8 @@ function Header() {
                 />
               </button>
             )}
-            <a href="/">
-              <img
-                className="w-[120px]"
-                src="https://www.rophim.net/images/logo.svg"
-                alt=""
-              />
+            <a className="text-[25px] font-extrabold text-white" href="/">
+              NOAZMOVIE
             </a>
           </div>
         )}
@@ -181,10 +177,10 @@ function Header() {
               <a href="#!">Chủ đề</a>
             </li>
             <li>
-            <Link to={`/the-loai/phim-le`}>Phim lẻ</Link>
+              <Link to={`/the-loai/phim-le`}>Phim lẻ</Link>
             </li>
             <li>
-             <Link to={`/the-loai/phim-bo`}>Phim bộ</Link>
+              <Link to={`/the-loai/phim-bo`}>Phim bộ</Link>
             </li>
             <li className="flex items-center gap-1 relative group">
               <a href="#!">Quốc gia</a>
@@ -204,7 +200,6 @@ function Header() {
                 })}
               </div>
             </li>
-      
           </ul>
         </nav>
 

@@ -14,7 +14,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import axios from "axios";
+import Login from "../Login/Login";
 function Home() {
+  const [Authentication, setAuthentication] = useState(false);
   const [MCN, setMCN] = useState([]);
   const [random, setRandom] = useState("");
   const HQ = useAxios("https://phimapi.com/v1/api/quoc-gia/han-quoc");
@@ -36,9 +38,7 @@ function Home() {
     };
     APIUPDATE();
 
-    setTimeout(() => {
-      
-    }, 3000);
+    setTimeout(() => {}, 3000);
   }, []);
 
   return (
@@ -601,6 +601,7 @@ function Home() {
           </div>
         </div>
       </div>
+      {Authentication && <Login />}
     </div>
   );
 }

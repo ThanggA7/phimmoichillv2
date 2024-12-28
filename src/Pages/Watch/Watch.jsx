@@ -158,7 +158,21 @@ function Watch() {
                 </div>
                 <div className="w-full h-[1px] bg-[#aaaaaa62] my-[1em] xl:block hidden"></div>
                 <div>
-                  <div className=" border rounded-[5px] w-[70px] text-center">
+                  <div className="w-full bg-gradient-to-r to-[#9B53C5] from-[#4958CF] rounded-lg flex items-center p-2">
+                    <div className="flex items-center gap-2 ">
+                      <div className="bg-[#2F3B8B] rounded-full p-1 w-[50px] ">
+                        <img
+                          src="https://www.rophim.net/images/alarm.gif"
+                          alt=""
+                        />
+                      </div>
+                      <strong className="text-white">
+                        Tập 10 sẽ phát sóng ngày 28-12-2024. Các bạn nhớ đón xem
+                        nhé 😚
+                      </strong>
+                    </div>
+                  </div>
+                  <div className=" mt-2 border rounded-[5px] w-[70px] text-center">
                     <span className="text-[15px] px-1 text-white">Phụ đề</span>
                   </div>
                   <div className="mt-[20px] grid lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 grid-cols-2  gap-3">
@@ -171,7 +185,9 @@ function Watch() {
                           }}
                           key={index}
                           className={({ isActive }) =>
-                            isActive ? "flex items-center justify-center  gap-2 px-2 py-1 bg-[#5aac5aa8] w-full h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71]" : "flex items-center justify-center  gap-2 px-2 py-1 bg-[#282B3A] w-full h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71]"
+                            isActive
+                              ? "flex items-center justify-center  gap-2 px-2 py-1 bg-[#5aac5aa8] w-full h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71]"
+                              : "flex items-center justify-center  gap-2 px-2 py-1 bg-[#282B3A] w-full h-[50px] rounded-md text-white text-[14px] group hover:text-[#F2CE71]"
                           }
                         >
                           <FontAwesomeIcon

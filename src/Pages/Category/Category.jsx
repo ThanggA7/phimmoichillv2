@@ -43,8 +43,13 @@ function Category() {
 
   return (
     <>
-      {loading && <Loading />}
-      {Category && (
+      {loading ? (
+        <div className="w-full h-screen flex flex-col items-center justify-center">
+          <span class="flex items-center justify-center  text-[35px] font-extrabold text-white">
+            NOAZMOVIE
+          </span>
+        </div>
+      ) : (
         <div>
           <div className="p-4">
             <div>

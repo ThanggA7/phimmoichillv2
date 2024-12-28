@@ -287,11 +287,25 @@ function Info() {
                 </Tabs>
 
                 <div className="mt-[25px]">
+                  <div className="w-full bg-gradient-to-r to-[#9B53C5] from-[#4958CF] rounded-lg flex items-center p-2">
+                    <div className="flex items-center gap-2 ">
+                      <div className="bg-[#2F3B8B] rounded-full p-1 w-[50px] ">
+                        <img
+                          src="https://www.rophim.net/images/alarm.gif"
+                          alt=""
+                        />
+                      </div>
+                      <strong className="text-white">
+                        Tập 10 sẽ phát sóng ngày 28-12-2024. Các bạn nhớ đón xem
+                        nhé 😚
+                      </strong>
+                    </div>
+                  </div>
                   {value === 0 && (
-                    <div>
+                    <div className="mt-3">
                       <div className="grid lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 grid-cols-2  gap-3">
                         {chap.map((chap, index) => {
-                          return chap2 > 2 ? (
+                          return chap2 > 1 ? (
                             <Link
                               key={index}
                               to={`/watch/${id}/${chap.slug}`}
@@ -413,7 +427,6 @@ function Info() {
             </div>
           </div>
         </div>
-
       </div>
     </>
   );

@@ -11,11 +11,9 @@ function Footer() {
     <div className="w-full bg-[#0F111A] p-10">
       <div className="flex items-center gap-7 lg:flex-row flex-col flex-wrap">
         <a href="#">
-          <img
-            className="w-[200px]"
-            src="https://www.rophim.net/images/logo.svg"
-            alt=""
-          />
+          <a className="text-[25px] font-extrabold text-white" href="/">
+            NOAZMOVIE
+          </a>
         </a>
         <div className="lg:block hidden w-[1px] h-[30px] bg-white"></div>
         <div className="flex items-center gap-2">
