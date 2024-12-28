@@ -42,11 +42,6 @@ function Footer() {
               <FontAwesomeIcon className="text-white" icon={faYoutube} />
             </a>
           </div>
-          <div className="flex items-center justify-center w-[40px] h-[40px] rounded-full bg-[#282B3A]">
-            <a href="#!">
-              <FontAwesomeIcon className="text-white" icon={faThreads} />
-            </a>
-          </div>
         </div>
       </div>
 
@@ -70,7 +65,7 @@ function Footer() {
         </ul>
       </nav>
       <p className="text-[14px] text-[#ffffffbe] mt-2">
-        Website chính thức và duy nhất của PhimChill. Hiện tại chúng mình chỉ có
+        Website chính thức và duy nhất của NoazMovie. Hiện tại chúng mình chỉ có
         duy nhất một website chứ không có website nào khác nhé!
       </p>
       <p className="text-[14px] text-[#ffffffbe] mt-2">© 2024 PhimHay</p>
