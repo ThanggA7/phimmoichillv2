@@ -297,9 +297,8 @@ function Info() {
                         />
                       </div>
                       <strong className="text-white">
-                        Vì Squid Game đã có sai phạm về yếu tố chính trị tại
-                        Việt Nam nên là bọn mình khuyến khích anh em không nên
-                        xem nhé !
+                        Chúc mừng năm mới mọi người, chúc mọi người năm mới bình
+                        an !!!!!!
                       </strong>
                     </div>
                   </div>
