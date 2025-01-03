@@ -183,9 +183,9 @@ function Home() {
                 <h1 className="text-[28px] font-bold text-white">
                   Phim Hàn Quốc mới
                 </h1>
-                <a className="text-[14px] text-white" href="#!">
+                <Link className="text-[14px] text-white" href="#!">
                   Xem toàn bộ
-                </a>
+                </Link>
               </div>
               <Swiper
                 modules={[Navigation, Pagination]}
@@ -236,9 +236,9 @@ function Home() {
                 <h1 className="text-[28px] font-bold text-white">
                   Phim Trung Quốc mới
                 </h1>
-                <a className="text-[14px] text-white" href="#!">
+                <Link className="text-[14px] text-white" href="#!">
                   Xem toàn bộ
-                </a>
+                </Link>
               </div>
               <Swiper
                 modules={[Navigation, Pagination]}
@@ -289,9 +289,9 @@ function Home() {
                 <h1 className="text-[28px] font-bold text-white">
                   Phim Hoạt Hình mới
                 </h1>
-                <a className="text-[14px] text-white" href="#!">
+                <Link className="text-[14px] text-white" href="#!">
                   Xem toàn bộ
-                </a>
+                </Link>
               </div>
               <Swiper
                 modules={[Navigation, Pagination]}
@@ -402,9 +402,9 @@ function Home() {
             <h1 className="lg:text-[25px] text-white lg:font-semibold lg:w-[500px] w-[235px] overflow-hidden text-ellipsis whitespace-nowrap ">
               Mãn nhãn với phim khoa học viễn tưởng
             </h1>
-            <a className="text-white" href="#!">
+            <Link className="text-white" href="#!">
               Xem thêm
-            </a>
+            </Link>
           </div>
           <div className="mt-[25px]">
             <Swiper

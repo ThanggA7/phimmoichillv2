@@ -1,11 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Typography from "@mui/material/Typography";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Loading from "../../components/Layout/Loading/Loading";
 function Category() {
   const [Category, setCategory] = useState([""]);
   const [titlePage, settitlePage] = useState([""]);

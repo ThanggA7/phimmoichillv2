@@ -8,6 +8,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 function Country() {
   const [country, setCountry] = useState([""]);
   const [titlePage, settitlePage] = useState([""]);
+  const [loading, setLoading] = useState(false);
   const [totalPage, setTotalPage] = useState([""]);
   const [page, setPage] = useState(1);
   const handleChange = (event, value) => {
@@ -22,6 +23,7 @@ function Country() {
   });
   const { id } = useParams();
   useEffect(() => {
+    setLoading(true);
     const Country = async () => {
       try {
         const res = await axios.get(
@@ -30,55 +32,68 @@ function Country() {
         setCountry(res.data.data.items);
         settitlePage(res.data.data.titlePage);
         setTotalPage(res.data.data.params.pagination.totalPages);
-      } catch (error) {}
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
     };
     Country();
   }, [id, page]);
 
   return (
     <>
-      <div className="p-4">
+      {loading ? (
+        <div className="w-full h-screen flex flex-col items-center justify-center">
+          <span class="flex items-center justify-center  text-[35px] font-extrabold text-white">
+            NOAZMOVIE
+          </span>
+        </div>
+      ) : (
         <div>
-          <h1 className="text-[1.8rem] text-white font-[600]">
-            Phim {titlePage}
-          </h1>
+          <div className="p-4">
+            <div>
+              <h1 className="text-[1.8rem] text-white font-[600]">
+                Phim {titlePage}
+              </h1>
+            </div>
+            <div className="grid lg:grid-cols-8 md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-5 mt-[20px] ">
+              {country.map((country, index) => {
+                return (
+                  <Link
+                    key={index}
+                    to={`/info/${country.slug}`}
+                    className="flex items-center flex-col justify-center mt-[20px]"
+                  >
+                    <div className="w-full h-[300px] rounded-lg">
+                      <img
+                        className="w-full h-full object-cover"
+                        src={`https://phimimg.com/${country.poster_url}`}
+                        alt=""
+                      />
+                      <div className="w-full h-full  rounded-lg  hover:bg-[#00000000]"></div>
+                    </div>
+                    <p className="text-center text-white text-[14px] w-[150px] overflow-hidden  text-ellipsis line-clamp-1 mt-1 hover:text-yellow-300">
+                      {country.name}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+          <div className="flex items-center justify-center p-2 mt-[30px]">
+            <Stack spacing={2}>
+              <ThemeProvider theme={theme}>
+                <Pagination
+                  color="secondary"
+                  count={totalPage}
+                  page={page}
+                  onChange={handleChange}
+                />
+              </ThemeProvider>
+            </Stack>
+          </div>
         </div>
-        <div className="grid lg:grid-cols-8 md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-5 mt-[20px] ">
-          {country.map((country, index) => {
-            return (
-              <Link
-                key={index}
-                to={`/info/${country.slug}`}
-                className="flex items-center flex-col justify-center mt-[20px]"
-              >
-                <div className="w-full h-[300px] rounded-lg">
-                  <img
-                    className="w-full h-full object-cover"
-                    src={`https://phimimg.com/${country.poster_url}`}
-                    alt=""
-                  />
-                  <div className="w-full h-full  rounded-lg  hover:bg-[#00000000]"></div>
-                </div>
-                <p className="text-center text-white text-[14px] w-[150px] overflow-hidden  text-ellipsis line-clamp-1 mt-1 hover:text-yellow-300">
-                  {country.name}
-                </p>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-      <div className="flex items-center justify-center p-2 mt-[30px]">
-        <Stack spacing={2}>
-          <ThemeProvider theme={theme}>
-            <Pagination
-              color="secondary"
-              count={totalPage}
-              page={page}
-              onChange={handleChange}
-            />
-          </ThemeProvider>
-        </Stack>
-      </div>
+      )}
     </>
   );
 }

@@ -28,6 +28,7 @@ function Info() {
   const [chap2, setChap2] = useState("");
   const [hideinfo, setHideInfo] = useState(true);
   const [images, setImages] = useState({});
+  const [noti, setNoti] = useState("");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -63,6 +64,18 @@ function Info() {
     };
     APIUPDATE(random);
   }, []);
+
+  useEffect(() => {
+    const Noti = async () => {
+      try {
+        const res = await axios.get(`https://be-csc.vercel.app/api/noti/${id}`);
+        if (res.data.content !== null) setNoti(res.data.content);
+      } catch (error) {}
+    };
+    Noti();
+  }, [id]);
+  console.log(noti);
+
   const response = `${info.content}`;
   const decodeHTML = (html) => {
     const div = document.createElement("p");
@@ -288,20 +301,19 @@ function Info() {
                 </Tabs>
 
                 <div className="mt-[25px]">
-                  <div className="w-full bg-gradient-to-r to-[#9B53C5] from-[#4958CF] rounded-lg flex items-center p-2">
-                    <div className="flex items-center gap-2 ">
-                      <div className="bg-[#2F3B8B] rounded-full p-1 w-[50px] ">
-                        <img
-                          src="https://www.rophim.net/images/alarm.gif"
-                          alt=""
-                        />
+                  {noti && (
+                    <div className="w-full bg-gradient-to-r to-[#9B53C5] from-[#4958CF] rounded-lg flex items-center p-2">
+                      <div className="flex items-center gap-2 ">
+                        <div className="bg-[#2F3B8B] rounded-full p-1 w-[50px] ">
+                          <img
+                            src="https://www.rophim.net/images/alarm.gif"
+                            alt=""
+                          />
+                        </div>
+                        <strong className="text-white">{noti}</strong>
                       </div>
-                      <strong className="text-white">
-                        Chúc mừng năm mới mọi người, chúc mọi người năm mới bình
-                        an !!!!!!
-                      </strong>
                     </div>
-                  </div>
+                  )}
                   {value === 0 && (
                     <div className="mt-3">
                       <div className="grid lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 grid-cols-2  gap-3">
