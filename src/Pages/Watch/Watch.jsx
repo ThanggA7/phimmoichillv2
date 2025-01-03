@@ -25,6 +25,7 @@ function Watch() {
   const { id } = useParams();
   const { chap } = useParams();
   const videoRef = useRef(null);
+  const [noti, setNoti] = useState("");
   useEffect(() => {
     const WatchFilm = async () => {
       try {
@@ -138,6 +139,16 @@ function Watch() {
     };
   }, [film]);
 
+  useEffect(() => {
+    const Noti = async () => {
+      try {
+        const res = await axios.get(`https://be-csc.vercel.app/api/noti/${id}`);
+        if (res.data.content !== null) setNoti(res.data.content);
+      } catch (error) {}
+    };
+    Noti();
+  }, [id]);
+
   return (
     <>
       <div className="px-4 ">
@@ -236,10 +247,7 @@ function Watch() {
                           alt=""
                         />
                       </div>
-                      <strong className="text-white">
-                        Chúc mừng năm mới mọi người, chúc mọi người năm mới bình
-                        an !!!!!!
-                      </strong>
+                      <strong className="text-white">{noti}</strong>
                     </div>
                   </div>
                   <div className=" mt-2 border rounded-[5px] w-[70px] text-center">
