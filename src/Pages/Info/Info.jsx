@@ -103,6 +103,7 @@ function Info() {
       }
     });
   }, [actors]);
+  console.log(info.thumb_url);
 
   return (
     <>
@@ -126,7 +127,7 @@ function Info() {
             <meta
               property="og:image"
               content={
-                info.poster_url ||
+                info.thumb_url ||
                 "https://default-image-url.com/default-image.jpg"
               }
             />
