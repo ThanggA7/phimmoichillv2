@@ -14,7 +14,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import axios from "axios";
-import Login from "../Login/Login";
 function Home() {
   const [Authentication, setAuthentication] = useState(false);
   const [MCN, setMCN] = useState([]);
@@ -40,7 +39,6 @@ function Home() {
 
     setTimeout(() => {}, 3000);
   }, []);
-  console.log(MCN);
 
   return (
     <div>
@@ -602,7 +600,6 @@ function Home() {
           </div>
         </div>
       </div>
-      {Authentication && <Login />}
     </div>
   );
 }

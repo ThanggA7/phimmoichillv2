@@ -1,5 +1,6 @@
 import { NavLink, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FacebookShareButton } from "react-share";
 import Plyr from "plyr";
 import Hls from "hls.js";
 import "plyr/dist/plyr.css";
@@ -9,6 +10,7 @@ import {
   faAngleRight,
   faPlay,
   faComments,
+  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
@@ -301,7 +303,7 @@ function Watch() {
                   </div>
 
                   <div className="mt-[35px]">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 " id="comment">
                       <FontAwesomeIcon
                         className="text-[20px] text-white  group-hover:text-[#F2CE71] "
                         icon={faComments}
@@ -325,7 +327,10 @@ function Watch() {
               <div className="p-3 w-full">
                 <div className="flex justify-between">
                   <div className="flex items-center gap-2">
-                    <button className="flex flex-col items-center p-2 hover:bg-[#1f2028b2] gap-1 rounded-md">
+                    <a
+                      href="#comment"
+                      className="flex flex-col items-center p-2 hover:bg-[#1f2028b2] gap-1 rounded-md"
+                    >
                       <FontAwesomeIcon
                         className="text-[18px] hover:text-[#FFD875] text-white"
                         icon={faComments}
@@ -333,17 +338,21 @@ function Watch() {
                       <p className="text-[12px] font-[400] text-white">
                         Bình luận
                       </p>
-                    </button>
+                    </a>
                     <div className="w-[1px] h-[30px] bg-[#aaaaaa28]"></div>
-                    <button className="flex flex-col items-center p-2 hover:bg-[#1f2028b2] gap-1 rounded-md">
-                      <FontAwesomeIcon
-                        className="text-[18px] hover:text-[#FFD875] text-white"
-                        icon={faComments}
-                      />
-                      <p className="text-[12px] font-[400] text-white">
-                        Chia sẻ
-                      </p>
-                    </button>
+                    <FacebookShareButton
+                      url={`http://localhost:5174/watch/${id}`}
+                    >
+                      <div className="flex flex-col items-center p-2 hover:bg-[#1f2028b2] gap-1 rounded-md">
+                        <FontAwesomeIcon
+                          className="text-[18px] hover:text-[#FFD875] text-white"
+                          icon={faPaperPlane}
+                        />
+                        <p className="text-[12px] font-[400] text-white">
+                          Chia sẻ
+                        </p>
+                      </div>
+                    </FacebookShareButton>
                   </div>
                   <button className="flex flex-col items-center p-2 hover:bg-[#1f2028b2] gap-1 rounded-md">
                     <FontAwesomeIcon

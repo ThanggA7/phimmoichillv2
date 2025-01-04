@@ -4,7 +4,6 @@ import { FacebookShareButton } from "react-share";
 import { React, useEffect, useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import useButton from "../../Hooks/useButton";
 import {
   faPlay,
   faHeart,
@@ -56,7 +55,6 @@ function Info() {
     };
     InfoFilm();
   }, [id]);
-  console.log(info);
   useEffect(() => {
     const random = Math.floor(Math.random() * 10);
     const APIUPDATE = async (random) => {
@@ -103,7 +101,6 @@ function Info() {
       }
     });
   }, [actors]);
-  console.log(info.thumb_url);
 
   return (
     <>
