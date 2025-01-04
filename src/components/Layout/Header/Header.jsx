@@ -186,7 +186,7 @@ function Header() {
               <a href="#!">Quốc gia</a>
               <FontAwesomeIcon icon={faAngleDown} />
 
-              <div className="w-[200px] h-[250px] bg-[#191B24] absolute top-[25px] rounded-md  flex-col gap-2 overflow-auto no-scrollbar p-2 group-hover:flex hidden">
+              <div className="w-[200px] h-[250px] bg-[#191B24] absolute top-[25px] right-0 rounded-md  flex-col gap-2 overflow-auto no-scrollbar p-2 group-hover:flex hidden">
                 {country.map((country, index) => {
                   return (
                     <Link
@@ -203,17 +203,6 @@ function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-4 text-white hidden xl:flex">
-          <button className="flex gap-3 items-center w-[130px] p-[5px] bg-[#FFFFFF] text-[#3A4783] rounded-xl justify-center  ">
-            <FontAwesomeIcon icon={faUser} />
-            <a href="#">Đăng nhập</a>
-          </button>
-
-          <button className="flex gap-3 items-center w-[120px] p-[5px]  border rounded-xl justify-center ">
-            <FontAwesomeIcon icon={faUserPlus} />
-            <a href="#">Đăng ký</a>
-          </button>
-        </div>
         {search == false && (
           <div
             className="w-full h-[35px] rounded-md bg-[#2D3139] flex items-center mr-2 p-2 xl:hidden relative
@@ -314,17 +303,6 @@ function Header() {
       {menu == true && (
         <div className="w-full  bg-[#3A4783]  ">
           <div className="p-3">
-            <div className="flex items-center justify-center gap-4 text-white">
-              <button className="flex gap-3 items-center w-[130px] p-[10px] bg-[#FFFFFF] text-[#3A4783] rounded-xl  ">
-                <FontAwesomeIcon icon={faUser} />
-                <a href="#">Đăng nhập</a>
-              </button>
-
-              <button className="flex gap-3 items-center w-[120px] p-[10px]  border rounded-xl">
-                <FontAwesomeIcon icon={faUserPlus} />
-                <a href="#">Đăng ký</a>
-              </button>
-            </div>
             <nav className="mt-[15px] text-[white] font-semibold">
               <ul className="grid grid-cols-2 gap-2">
                 <li>
