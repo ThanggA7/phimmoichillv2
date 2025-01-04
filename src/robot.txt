@@ -1,0 +1,20 @@
+# Tệp robots.txt cho trang web của tôi
+
+# Chặn tất cả các công cụ tìm kiếm thu thập dữ liệu trên toàn bộ trang web
+User-agent: *
+Disallow: /
+
+# Cho phép Googlebot thu thập dữ liệu tất cả các trang
+User-agent: Googlebot
+Disallow:
+
+# Chặn một số thư mục không muốn các công cụ tìm kiếm thu thập dữ liệu
+User-agent: *
+Disallow: /private/
+Disallow: /admin/
+Disallow: /cgi-bin/
+
+# Cho phép công cụ tìm kiếm thu thập dữ liệu từ các thư mục công khai
+User-agent: *
+Allow: /public/
+
