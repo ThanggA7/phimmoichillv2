@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FacebookProvider, ShareButton } from "react-facebook";
+import { Helmet } from "react-helmet";
+import { FacebookShareButton } from "react-share";
 import { React, useEffect, useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -12,7 +13,6 @@ import {
   faComments,
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { faImdb } from "@fortawesome/free-brands-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import FacebookComments from "../../components/Comment/FacebookComment/FacebookComments";
@@ -25,7 +25,6 @@ function Info() {
   const [country, setCountry] = useState([]);
   const [chap, setChap] = useState([]);
   const [DX, setDX] = useState([]);
-  const [cmt, setcmt] = useState("");
   const [loading, setLoading] = useState(false);
   const [chap2, setChap2] = useState("");
   const [hideinfo, setHideInfo] = useState(true);
@@ -35,12 +34,7 @@ function Info() {
     setValue(newValue);
   };
   const { id } = useParams();
-  const url = "https://noazmovie.site/";
-  useEffect(() => {
-    if (window.FB) {
-      window.FB.XFBML.parse();
-    }
-  }, []);
+  const url = `https://www.noazmovie.site/info/${id}`;
 
   useEffect(() => {
     const InfoFilm = async () => {
@@ -62,7 +56,7 @@ function Info() {
     };
     InfoFilm();
   }, [id]);
-
+  console.log(info);
   useEffect(() => {
     const random = Math.floor(Math.random() * 10);
     const APIUPDATE = async (random) => {
@@ -120,6 +114,15 @@ function Info() {
         </div>
       ) : (
         <div className="">
+          <Helmet>
+            <meta
+              property="og:title"
+              content={`Phim ${info.name} - ${info.origin_name}  `}
+            />
+            <meta property="og:description" content={`${info.content}`} />
+            <meta property="og:image" content={`${info.poster_url}`} />
+            <meta property="og:url" content={`https://noazmovie.site/${id}`} />
+          </Helmet>
           <div className="xl:absolute  inset-0  relative">
             <div className="relative w-full xl:h-[550px]">
               <div className=" absolute w-full h-full bg-[#00000042] bg-pixel-overlay top-0 left-0  pointer-events-none"></div>
@@ -270,31 +273,30 @@ function Info() {
                           Thêm vào
                         </p>
                       </button>
-                      <FacebookProvider appId="93bf4f1bd52766f54a98afca49ac24ae">
-                        <ShareButton
-                          className="flex flex-col items-center p-2 hover:bg-[#1f2028b2] gap-1 rounded-md"
-                          href={url}
-                        >
-                          {" "}
+                      <FacebookShareButton url={url}>
+                        <div className="flex flex-col items-center p-2 hover:bg-[#1f2028b2] gap-1 rounded-md">
                           <FontAwesomeIcon
                             className="text-[18px] hover:text-[#FFD875] text-white"
                             icon={faPaperPlane}
                           />
-                          <p className="text-[12px] font-[400] text-white ">
+                          <p className="text-[12px] font-[400] text-white">
                             Chia sẻ
                           </p>
-                        </ShareButton>
-                      </FacebookProvider>
-                      <button className="flex flex-col items-center p-2 hover:bg-[#1f2028b2] gap-1 rounded-md">
+                        </div>
+                      </FacebookShareButton>
+                      <a
+                        className="flex flex-col items-center p-2 hover:bg-[#1f2028b2] gap-1 rounded-md"
+                        href="#comment"
+                      >
                         <FontAwesomeIcon
                           className="text-[18px] hover:text-[#FFD875] text-white"
                           icon={faComments}
                         />
 
-                        <p className="text-[12px] font-[400] text-white ">
+                        <p className="text-[12px] font-[400] text-white">
                           Bình luận
                         </p>
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -379,7 +381,10 @@ function Info() {
                         </div>
 
                         <div className="mt-[35px]">
-                          <div className="flex items-center gap-3">
+                          <div
+                            className="flex items-center gap-3 "
+                            id="comment"
+                          >
                             <FontAwesomeIcon
                               className="text-[20px] text-white  group-hover:text-[#F2CE71] "
                               icon={faComments}

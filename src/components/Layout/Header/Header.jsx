@@ -74,100 +74,106 @@ function Header() {
       } sticky top-0 z-30 transition-all duration-300`}
     >
       <header className="flex items-center justify-between py-3 px-6 relative z-90   ">
-        {search == true && (
-          <div className="flex gap-5">
-            {menu == false ? (
-              <button
-                onClick={() => {
-                  setMenu(!menu);
-                }}
-              >
-                <FontAwesomeIcon
-                  className="block xl:hidden text-white text-[20px]"
-                  icon={faBars}
-                />
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  setMenu(!menu);
-                }}
-                className="block xl:hidden"
-              >
-                <FontAwesomeIcon
-                  className="text-[25px] text-[#e75353f5]"
-                  icon={faXmark}
-                />
-              </button>
-            )}
-            <a className="text-[25px] font-extrabold text-white" href="/">
-              NOAZMOVIE
-            </a>
-          </div>
-        )}
-
-        <div className="w-[350px] h-[45px] rounded-md bg-[#2d3139b2] flex items-center hidden xl:flex  relative ">
-          <FontAwesomeIcon
-            className="p-3 text-[px] text-[white]"
-            icon={faMagnifyingGlass}
-          />
-          <input
-            onChange={SearchFilm}
-            value={searchFilm}
-            className="w-full h-full bg-transparent outline-none  text-[white]"
-            placeholder="Tìm kiếm phim, diễn viên"
-            type="text"
-          />
-          {searchFilm && (
-            <div className="w-[350px] bg-[#2d3139ad] absolute top-[40px] z-50 rounded-xl p-3">
-              {resultFilm.map((rsf, index) => {
-                return (
-                  <Link
-                    key={index}
-                    to={`/info/${rsf.slug}`}
-                    className="w-full h-[70px] rounded-md p-1 flex items-center gap-4 hover:bg-[#3e434ba6] "
-                  >
-                    <img
-                      className="w-[50px] h-full object-cover"
-                      src={`https://phimimg.com/${rsf.poster_url}`}
-                      alt=""
-                    />
-
-                    <div>
-                      <p className="text-white text-[17px] w-[270px] overflow-hidden text-ellipsis whitespace-nowrap ">
-                        {rsf.name}
-                      </p>
-                      <div className="flex items-center gap-3 mt-1">
-                        <p className="text-white text-[14px] ">{rsf.lang}</p>
-                        <div className="flex items-center gap-2">
-                          <div className="bg-black w-[5px] h-[5px] rounded-full"></div>
-                          <p className="text-white text-[14px] ">{rsf.time}</p>
-                        </div>{" "}
-                        <div className="flex items-center gap-2">
-                          <div className="bg-black w-[5px] h-[5px] rounded-full"></div>
-                          <p className="text-white text-[14px] ">{rsf.year}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
-              {more > 5 && (
-                <Link className="w-full h-[40px] rounded-md p-1 flex items-center justify-center gap-4 bg-slate-600 ">
-                  <p className="text-[17px] font-medium text-white">
-                    Xem thêm...
-                  </p>
-                </Link>
+        <div className="flex items-center gap-[50px]">
+          {search == true && (
+            <div className="flex gap-5">
+              {menu == false ? (
+                <button
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
+                >
+                  <FontAwesomeIcon
+                    className="block xl:hidden text-white text-[20px]"
+                    icon={faBars}
+                  />
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
+                  className="block xl:hidden"
+                >
+                  <FontAwesomeIcon
+                    className="text-[25px] text-[#e75353f5]"
+                    icon={faXmark}
+                  />
+                </button>
               )}
-              {resultFilm.length == 0 && (
-                <div className="w-full h-[40px] rounded-md p-1 flex items-center justify-center gap-4 bg-slate-600 ">
-                  <p className="text-[14px] font-medium text-white hover:text-[#FEDD8A] cursor-pointer">
-                    Không tìm thấy kết quả nào
-                  </p>
-                </div>
-              )}
+              <a className="text-[25px] font-extrabold text-white" href="/">
+                NOAZMOVIE
+              </a>
             </div>
           )}
+
+          <div className="w-[350px] h-[45px] rounded-md bg-[#2d3139b2] flex items-center hidden xl:flex  relative ">
+            <FontAwesomeIcon
+              className="p-3 text-[px] text-[white]"
+              icon={faMagnifyingGlass}
+            />
+            <input
+              onChange={SearchFilm}
+              value={searchFilm}
+              className="w-full h-full bg-transparent outline-none  text-[white]"
+              placeholder="Tìm kiếm phim, diễn viên"
+              type="text"
+            />
+            {searchFilm && (
+              <div className="w-[350px] bg-[#2d3139ad] absolute top-[40px] z-50 rounded-xl p-3">
+                {resultFilm.map((rsf, index) => {
+                  return (
+                    <Link
+                      key={index}
+                      to={`/info/${rsf.slug}`}
+                      className="w-full h-[70px] rounded-md p-1 flex items-center gap-4 hover:bg-[#3e434ba6] "
+                    >
+                      <img
+                        className="w-[50px] h-full object-cover"
+                        src={`https://phimimg.com/${rsf.poster_url}`}
+                        alt=""
+                      />
+
+                      <div>
+                        <p className="text-white text-[17px] w-[270px] overflow-hidden text-ellipsis whitespace-nowrap ">
+                          {rsf.name}
+                        </p>
+                        <div className="flex items-center gap-3 mt-1">
+                          <p className="text-white text-[14px] ">{rsf.lang}</p>
+                          <div className="flex items-center gap-2">
+                            <div className="bg-black w-[5px] h-[5px] rounded-full"></div>
+                            <p className="text-white text-[14px] ">
+                              {rsf.time}
+                            </p>
+                          </div>{" "}
+                          <div className="flex items-center gap-2">
+                            <div className="bg-black w-[5px] h-[5px] rounded-full"></div>
+                            <p className="text-white text-[14px] ">
+                              {rsf.year}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+                {more > 5 && (
+                  <Link className="w-full h-[40px] rounded-md p-1 flex items-center justify-center gap-4 bg-slate-600 ">
+                    <p className="text-[17px] font-medium text-white">
+                      Xem thêm...
+                    </p>
+                  </Link>
+                )}
+                {resultFilm.length == 0 && (
+                  <div className="w-full h-[40px] rounded-md p-1 flex items-center justify-center gap-4 bg-slate-600 ">
+                    <p className="text-[14px] font-medium text-white hover:text-[#FEDD8A] cursor-pointer">
+                      Không tìm thấy kết quả nào
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* PC  */}
