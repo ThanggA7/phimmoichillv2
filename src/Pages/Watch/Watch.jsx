@@ -151,7 +151,7 @@ function Watch() {
 
   return (
     <>
-      <div className="px-4 ">
+      <div className="lg:px-4 px-2 ">
         <div className="flex items-center gap-3 hidden md:flex mt-2">
           <Link
             to={"/"}
@@ -168,7 +168,7 @@ function Watch() {
         <div className=" mt-[30px]">
           <video ref={videoRef} id="my-hls-video" controls />
         </div>
-        <div className=" mx-auto p-4  mt-[25px]">
+        <div className=" mx-auto lg:p-4   mt-[25px]">
           <div className="flex flex-col xl:flex-row gap-4">
             <div className="xl:w-2/3">
               <div className="p-3">
@@ -239,17 +239,19 @@ function Watch() {
                 </div>
                 <div className="w-full h-[1px] bg-[#aaaaaa62] my-[1em] xl:block hidden"></div>
                 <div>
-                  <div className="w-full bg-gradient-to-r to-[#9B53C5] from-[#4958CF] rounded-lg flex items-center p-2">
-                    <div className="flex items-center gap-2 ">
-                      <div className="bg-[#2F3B8B] rounded-full p-1 w-[50px] ">
-                        <img
-                          src="https://www.rophim.net/images/alarm.gif"
-                          alt=""
-                        />
+                  {noti && (
+                    <div className="w-full bg-gradient-to-r to-[#9B53C5] from-[#4958CF] rounded-lg flex items-center p-2">
+                      <div className="flex items-center gap-2 ">
+                        <div className="bg-[#2F3B8B] rounded-full p-1 w-[50px] ">
+                          <img
+                            src="https://www.rophim.net/images/alarm.gif"
+                            alt=""
+                          />
+                        </div>
+                        <strong className="text-white">{noti}</strong>
                       </div>
-                      <strong className="text-white">{noti}</strong>
                     </div>
-                  </div>
+                  )}
                   <div className=" mt-2 border rounded-[5px] w-[70px] text-center">
                     <span className="text-[15px] px-1 text-white">Phụ đề</span>
                   </div>

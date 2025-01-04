@@ -26,7 +26,7 @@ function Home() {
   const PB = useAxios(`https://phimapi.com/v1/api/danh-sach/phim-bo?limit=25`);
   const TV = useAxios(`https://phimapi.com/v1/api/danh-sach/tv-shows?limit=25`);
   const KH = useAxios(`https://phimapi.com/v1/api/the-loai/khoa-hoc?limit=25`);
-
+  const DX = useAxios(`https://phimapi.com/v1/api/nam/2024?page=2&limit=64`);
   useEffect(() => {
     const APIUPDATE = async () => {
       try {
@@ -40,6 +40,7 @@ function Home() {
 
     setTimeout(() => {}, 3000);
   }, []);
+  console.log(MCN);
 
   return (
     <div>
@@ -153,19 +154,19 @@ function Home() {
               },
             }}
           >
-            {PL.map((pl, index) => {
+            {DX.map((dx, index) => {
               return (
                 <SwiperSlide key={index} className="group">
                   <div className="w-full">
-                    <Link to={`/info/${pl.slug}`}>
+                    <Link to={`/info/${dx.slug}`}>
                       <img
                         className="w-[209px] h-[300px] object-cover"
-                        src={`https://phimimg.com/${pl.poster_url}`}
+                        src={`https://phimimg.com/${dx.poster_url}`}
                         alt=""
                       />
 
-                      <p className="mt-1 text-white lg:text-center text-[14px] w-[150px] overflow-hidden  text-ellipsis line-clamp-2">
-                        {pl.name}
+                      <p className="mt-1 text-white lg:text-center text-[14px] w-[150px] overflow-hidden  text-ellipsis line-clamp-1">
+                        {dx.name}
                       </p>
                     </Link>
                   </div>
