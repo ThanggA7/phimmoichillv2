@@ -117,11 +117,29 @@ function Info() {
           <Helmet>
             <meta
               property="og:title"
-              content={`Phim ${info.name} - ${info.origin_name}  `}
+              content={`Phim ${info.name} - ${info.origin_name}`}
             />
-            <meta property="og:description" content={`${info.content}`} />
-            <meta property="og:image" content={`${info.poster_url}`} />
+            <meta
+              property="og:description"
+              content={info.content || "Mô tả phim chưa có."}
+            />
+            <meta
+              property="og:image"
+              content={
+                info.poster_url ||
+                "https://default-image-url.com/default-image.jpg"
+              }
+            />
             <meta property="og:url" content={`https://noazmovie.site/${id}`} />
+
+            <meta
+              name="description"
+              content={info.content || "Mô tả phim chưa có."}
+            />
+            <meta
+              name="keywords"
+              content={`phim, ${info.name}, ${info.origin_name}`}
+            />
           </Helmet>
           <div className="xl:absolute  inset-0  relative">
             <div className="relative w-full xl:h-[550px]">
