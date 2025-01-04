@@ -126,10 +126,7 @@ function Info() {
             />
             <meta
               property="og:image"
-              content={
-                info.thumb_url ||
-                "https://default-image-url.com/default-image.jpg"
-              }
+              content="https://phimimg.com/upload/vod/20241225-1/927725a57dabf23682ad3bb6c57a517c.jpg"
             />
             <meta property="og:url" content={`https://noazmovie.site/${id}`} />
 
