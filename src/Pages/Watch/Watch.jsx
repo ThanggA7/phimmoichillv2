@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Plyr from "plyr";
 import Hls from "hls.js";
 import "plyr/dist/plyr.css";
-
+import FacebookComments from "../../components/Comment/FacebookComment/FacebookComments";
 import {
   faAngleLeft,
   faAngleRight,
@@ -308,14 +308,11 @@ function Watch() {
                       />
                       <span className="text-[20px] text-white">Bình luận</span>
                     </div>
-                    <div className="w-full bg-[#14151C] h-[200px] rounded-xl mt-5 flex items-center justify-center">
-                      <FontAwesomeIcon
-                        className="text-[18px] text-white  group-hover:text-[#F2CE71] font-[300] "
-                        icon={faComments}
+                    <div className="w-full bg-[white]  rounded-xl mt-5 ">
+                      <FacebookComments
+                        href={`https://www.noazmovie.site/${id}`}
+                        className="p-2"
                       />
-                      <span className="text-[15px] text-white ml-3 font-[300]">
-                        Chưa có bình luận nào
-                      </span>
                     </div>
                   </div>
                 </div>

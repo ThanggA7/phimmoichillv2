@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   faTiktok,
   faInstagram,
@@ -10,11 +11,11 @@ function Footer() {
   return (
     <div className="w-full bg-[#0F111A] p-10">
       <div className="flex items-center gap-7 lg:flex-row flex-col flex-wrap">
-        <a href="#">
-          <a className="text-[25px] font-extrabold text-white" href="/">
+        <Link to="#">
+          <p className="text-[25px] font-extrabold text-white">
             NOAZMOVIE
-          </a>
-        </a>
+          </p>
+        </Link>
         <div className="lg:block hidden w-[1px] h-[30px] bg-white"></div>
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center w-[40px] h-[40px] rounded-full bg-[#282B3A]">

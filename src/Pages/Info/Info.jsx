@@ -15,6 +15,7 @@ import {
 import { faImdb } from "@fortawesome/free-brands-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import FacebookComments from "../../components/Comment/FacebookComment/FacebookComments";
 function Info() {
   const [value, setValue] = useState(0);
   const [info, getInfo] = useState("");
@@ -34,7 +35,12 @@ function Info() {
     setValue(newValue);
   };
   const { id } = useParams();
-  const url = "https://yourwebsite.com";
+  const url = "https://noazmovie.site/";
+  useEffect(() => {
+    if (window.FB) {
+      window.FB.XFBML.parse();
+    }
+  }, []);
 
   useEffect(() => {
     const InfoFilm = async () => {
@@ -79,7 +85,6 @@ function Info() {
     };
     Noti();
   }, [id]);
-  console.log(noti);
 
   const response = `${info.content}`;
   const decodeHTML = (html) => {
@@ -109,7 +114,7 @@ function Info() {
     <>
       {loading ? (
         <div className="w-full h-screen flex flex-col items-center justify-center">
-          <span class="flex items-center justify-center  text-[35px] font-extrabold text-white">
+          <span className="flex items-center justify-center  text-[35px] font-extrabold text-white">
             NOAZMOVIE
           </span>
         </div>
@@ -383,14 +388,11 @@ function Info() {
                               Bình luận
                             </span>
                           </div>
-                          <div className="w-full bg-[#14151C] h-[200px] rounded-xl mt-5 flex items-center justify-center">
-                            <FontAwesomeIcon
-                              className="text-[18px] text-white  group-hover:text-[#F2CE71] font-[300] "
-                              icon={faComments}
+                          <div className="w-full bg-[white]  rounded-xl mt-5">
+                            <FacebookComments
+                              href={`https://www.noazmovie.site/${id}`}
+                              className="p-2"
                             />
-                            <span className="text-[15px] text-white ml-3 font-[300]">
-                              Chưa có bình luận nào
-                            </span>
                           </div>
                         </div>
                       </div>
