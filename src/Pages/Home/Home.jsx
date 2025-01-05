@@ -15,7 +15,6 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import axios from "axios";
 function Home() {
-  const [Authentication, setAuthentication] = useState(false);
   const [MCN, setMCN] = useState([]);
   const [random, setRandom] = useState("");
   const HQ = useAxios("https://phimapi.com/v1/api/quoc-gia/han-quoc");

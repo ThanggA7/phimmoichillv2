@@ -7,7 +7,7 @@ import {
   faUserPlus,
   faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import _ from "lodash";
 import { Link } from "react-router-dom";
@@ -19,6 +19,8 @@ function Header() {
   const [more, setMore] = useState([]);
   const [country, setCountry] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
+  const searchRef = useRef(null);
+
   const SearchFilm = (e) => {
     setSearchFilm(e.target.value);
   };
@@ -65,6 +67,19 @@ function Header() {
     };
 
     Countries();
+  }, []);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setSearchFilm("");
+        setResultFilm([]);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   return (
@@ -120,12 +135,15 @@ function Header() {
               type="text"
             />
             {searchFilm && (
-              <div className="w-[350px] bg-[#2d3139ad] absolute top-[40px] z-50 rounded-xl p-3">
+              <div
+                ref={searchRef}
+                className="w-[350px] bg-[#2d3139ad] absolute top-[50px] z-50 rounded-xl p-3"
+              >
                 {resultFilm.map((rsf, index) => {
                   return (
-                    <Link
+                    <a
                       key={index}
-                      to={`/info/${rsf.slug}`}
+                      href={`/info/${rsf.slug}`}
                       className="w-full h-[70px] rounded-md p-1 flex items-center gap-4 hover:bg-[#3e434ba6] "
                     >
                       <img
@@ -154,7 +172,7 @@ function Header() {
                           </div>
                         </div>
                       </div>
-                    </Link>
+                    </a>
                   );
                 })}
                 {more > 5 && (
