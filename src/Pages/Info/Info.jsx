@@ -262,7 +262,7 @@ function Info() {
                 <div className="flex items-center">
                   <div className="flex items-center md:gap-[50px] sm:flex-row flex-col gap-3 w-full ">
                     <Link
-                      to={`/watch/${id}`}
+                      to={`/watch/${id}/tap-01`}
                       className="px-7 py-4 bg-gradient-to-t to-[#ecd59a] from-[#e2c988] rounded-[25px] text-[18px] font-bold hover:opacity-80 max-md:w-full text-center"
                     >
                       <FontAwesomeIcon className="text-[20px] " icon={faPlay} />{" "}
