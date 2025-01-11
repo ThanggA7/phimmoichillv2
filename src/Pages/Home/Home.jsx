@@ -181,7 +181,10 @@ function Home() {
                 <h1 className="text-[28px] font-bold text-white">
                   Phim Hàn Quốc mới
                 </h1>
-                <Link className="text-[14px] text-white" href="#!">
+                <Link
+                  className="text-[14px] text-white"
+                  to={`/quoc-gia/han-quoc`}
+                >
                   Xem toàn bộ
                 </Link>
               </div>
@@ -234,7 +237,10 @@ function Home() {
                 <h1 className="text-[28px] font-bold text-white">
                   Phim Trung Quốc mới
                 </h1>
-                <Link className="text-[14px] text-white" href="#!">
+                <Link
+                  className="text-[14px] text-white"
+                  to={`/quoc-gia/trung-quoc`}
+                >
                   Xem toàn bộ
                 </Link>
               </div>
