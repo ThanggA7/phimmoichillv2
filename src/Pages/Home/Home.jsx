@@ -293,7 +293,10 @@ function Home() {
                 <h1 className="text-[28px] font-bold text-white">
                   Phim Hoạt Hình mới
                 </h1>
-                <Link className="text-[14px] text-white" href="#!">
+                <Link
+                  className="text-[14px] text-white"
+                  to={`/the-loai/hoat-hinh`}
+                >
                   Xem toàn bộ
                 </Link>
               </div>
